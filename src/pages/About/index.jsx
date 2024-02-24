@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Img, Line, Text } from "components";
 import Footer from "components/Footer";
+import Navbar from "components/Navbar";
 
 const AboutPage = () => {
   const navigate = useNavigate();
@@ -12,54 +13,8 @@ const AboutPage = () => {
     <>
       <div className="bg-white-A700 flex flex-col font-sourcesanspro gap-[54px] items-start justify-start mx-auto w-full">
         <div className="flex flex-col items-center w-full">
-          <header className="flex items-center justify-center md:px-5 w-full">
-            <div className="flex flex-row md:gap-10 items-center justify-between ml-[164px] mr-[181px] my-[15px] w-[76%]">
-              <div className="header-row ">
-                <Img
-                  className="h-[50px]"
-                  src="images/img_group642.svg"
-                  alt="Group645"
-                />
-                <div className="mobile-menu">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </div>
-              <div className="flex flex-row sm:hidden items-start justify-between pt-[7px] w-[38%]">
-                <Text
-                  className="common-pointer text-black-900 text-lg"
-                  size="txtSourceSansProBold18Black900"
-                  onClick={() => navigate("/")}
-                >
-                  Home
-                </Text>
-                <div className="flex flex-col gap-[11px] items-center justify-start">
-                  <Text
-                    className="text-lg text-red-401"
-                    size="txtSourceSansProBold18"
-                  >
-                    About
-                  </Text>
-                  <div className="bg-red-401 h-1.5 rounded-[50%] w-1.5"></div>
-                </div>
-                <Text
-                  className="common-pointer text-black-900 text-lg"
-                  size="txtSourceSansProBold18Black900"
-                  onClick={() => navigate("/works")}
-                >
-                  Works
-                </Text>
-                <Text
-                  className="common-pointer text-black-900 text-lg"
-                  size="txtSourceSansProBold18Black900"
-                  onClick={() => navigate("/contact")}
-                >
-                  Contact
-                </Text>
-              </div>
-            </div>
-          </header>
+          
+          <Navbar/>
         </div>
         <div className="flex flex-col items-start justify-start md:px-5 w-[91%] md:w-full">
           <div className="bg-yellow-100 flex flex-col items-center justify-end md:ml-[0] ml-[130px] p-[53px] md:px-10 sm:px-5 rounded-[90px] w-[91%] md:w-full">
@@ -123,7 +78,7 @@ const AboutPage = () => {
                     className="sm:text-[21px] md:text-[23px] text-[25px] text-gray-800"
                     size="txtSourceSansProBold25"
                   >
-                    Sarah Jae
+                    Priya
                   </Text>
                   <Text
                     className="text-black-900_68 text-xl"
@@ -135,8 +90,8 @@ const AboutPage = () => {
               </div>
               <div className="flex flex-1 flex-col gap-[42px] items-center justify-start pb-[7px] w-full">
                 <Img
-                  className="h-[460px] sm:h-auto object-cover rounded-bl-[10px] rounded-br-[10px] w-full"
-                  src="images/img_rectangle15.png"
+                  className="h-[460px] rounded-lg sm:h-auto object-cover rounded-bl-[10px] rounded-br-[10px] w-full"
+                  src="images/ansh.jpg"
                   alt="RectangleFifteen"
                 />
                 <div className="flex flex-col gap-[19px] items-center justify-start">
@@ -144,7 +99,7 @@ const AboutPage = () => {
                     className="sm:text-[21px] md:text-[23px] text-[25px] text-gray-800"
                     size="txtSourceSansProBold25"
                   >
-                    John Doe
+                    Ansh Jain
                   </Text>
                   <Text
                     className="text-black-900_68 text-xl"
@@ -165,7 +120,7 @@ const AboutPage = () => {
                     className="sm:text-[21px] md:text-[23px] text-[25px] text-gray-800"
                     size="txtSourceSansProBold25"
                   >
-                    Samantha
+                    Harshita
                   </Text>
                   <Text
                     className="text-black-900_68 text-xl"
@@ -186,7 +141,7 @@ const AboutPage = () => {
                     className="text-3xl sm:text-[26px] md:text-[28px] text-black-900"
                     size="txtSourceSansProBold30"
                   >
-                    Lila laconsia
+                    Ananya
                   </Text>
                   <Text
                     className="sm:text-[21px] md:text-[23px] text-[25px] text-black-900_68"
@@ -207,7 +162,7 @@ const AboutPage = () => {
                     className="text-3xl sm:text-[26px] md:text-[28px] text-black-900"
                     size="txtSourceSansProBold30"
                   >
-                    Ana louren
+                    Neha
                   </Text>
                   <Text
                     className="sm:text-[21px] md:text-[23px] text-[25px] text-black-900_68"
@@ -228,7 +183,7 @@ const AboutPage = () => {
                     className="text-3xl sm:text-[26px] md:text-[28px] text-black-900"
                     size="txtSourceSansProBold30"
                   >
-                    Rico john
+                    Ritu
                   </Text>
                   <Text
                     className="sm:text-[21px] md:text-[23px] text-[25px] text-black-900_68"
@@ -249,7 +204,7 @@ const AboutPage = () => {
                     className="text-3xl sm:text-[26px] md:text-[28px] text-black-900"
                     size="txtSourceSansProBold30"
                   >
-                    Randy okla
+                    Deepika
                   </Text>
                   <Text
                     className="sm:text-[21px] md:text-[23px] text-[25px] text-black-900_68"
@@ -270,7 +225,7 @@ const AboutPage = () => {
                     className="text-3xl sm:text-[26px] md:text-[28px] text-black-900"
                     size="txtSourceSansProBold30"
                   >
-                    Sinta Marcus
+                    Jyoti
                   </Text>
                   <Text
                     className="sm:text-[21px] md:text-[23px] text-[25px] text-black-900_68"
@@ -291,7 +246,7 @@ const AboutPage = () => {
                     className="text-3xl sm:text-[26px] md:text-[28px] text-black-900"
                     size="txtSourceSansProBold30"
                   >
-                    Sam Rivald
+                    Samarth
                   </Text>
                   <Text
                     className="sm:text-[21px] md:text-[23px] text-[25px] text-black-900_68"

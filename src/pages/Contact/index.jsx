@@ -1,69 +1,66 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Input, Line, Text, TextArea } from "components";
 import Footer1 from "components/Footer1";
+import Navbar from "components/Navbar";
+import emailjs from '@emailjs/browser'
 
 const ContactPage = () => {
   const navigate = useNavigate();
+  const form = useRef();
+  const [emailSent, setEmailSent] = useState(false)
+  const [formData, setFormData] = useState({
+    from_name: "",
+    email: '',
+    message: '',
+  })
 
   function handleNavigate() {
     window.location.href = "www.nexus.com";
+  }
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setFormData({
+      from_name: '',
+      email: '',
+      message: '',
+    })
+
+    emailjs
+      .sendForm('serviceid', 'template_duyypb6', e.target, {
+        publicKey: 'M4bWn_69MjBf-4Dx3',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          
+          setEmailSent(true)
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          setEmailSent(false);
+        },
+        setEmailSent(false)
+      );
+      
+  };
+  
+  const handleChange = (e) => {
+    console.log(e.target.value)
+    setFormData({
+      ...formData,
+      [e.target.name] : e.target.value
+    })
   }
 
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-sourcesanspro gap-[54px] items-start justify-start mx-auto w-full">
         <div className="flex flex-col items-center w-full">
-          <header className="flex items-center justify-center md:px-5 w-full">
-            <div className="flex flex-row md:gap-10 items-center justify-between mx-auto my-[15px] w-[78%]">
-              <div className="header-row ">
-                <Img
-                  className="h-[50px]"
-                  src="images/img_group642.svg"
-                  alt="Group645"
-                />
-                <div className="mobile-menu">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </div>
-              <div className="flex flex-row sm:hidden items-start justify-between pr-[7px] pt-[7px] w-[39%]">
-                <Text
-                  className="common-pointer text-black-900 text-lg"
-                  size="txtSourceSansProBold18Black900"
-                  onClick={() => navigate("/")}
-                >
-                  Home
-                </Text>
-                <Text
-                  className="common-pointer text-black-900 text-lg"
-                  size="txtSourceSansProBold18Black900"
-                  onClick={() => navigate("/about")}
-                >
-                  About
-                </Text>
-                <Text
-                  className="common-pointer text-black-900 text-lg"
-                  size="txtSourceSansProBold18Black900"
-                  onClick={() => navigate("/works")}
-                >
-                  Works
-                </Text>
-                <div className="flex flex-col gap-2.5 items-center justify-start mr-2.5">
-                  <Text
-                    className="text-lg text-red-401"
-                    size="txtSourceSansProBold18"
-                  >
-                    Contact
-                  </Text>
-                  <div className="bg-red-401 h-1.5 rounded-[50%] w-1.5"></div>
-                </div>
-              </div>
-            </div>
-          </header>
+          
+          <Navbar/>
         </div>
         <div className="flex flex-col items-start justify-start md:px-5 w-[92%] md:w-full">
           <div className="bg-blue-50 flex flex-col items-center justify-start md:ml-[0] ml-[121px] p-[51px] md:px-10 sm:px-5 rounded-[90px] w-[91%] md:w-full">
@@ -94,8 +91,8 @@ const ContactPage = () => {
             </div>
           </div>
           <div className="flex md:flex-col flex-row gap-[41px] items-center justify-end md:ml-[0] ml-[120px] mt-[100px] w-[91%] md:w-full">
-            <div className="bg-white-A700 md:h-[425px] sm:h-[538px] h-[599px] md:mt-0 mt-[15px] p-[70px] md:px-10 sm:px-5 relative rounded-[20px] shadow-bs6 w-[66%] md:w-full">
-              <div className="absolute flex flex-col gap-[23px] inset-x-[0] items-center justify-start mx-auto pb-[72px] rounded-[5px] top-[12%] w-3/4">
+            <div className="bg-white-A700  md:h-[425px] sm:h-[538px] h-[599px] md:mt-0 mt-[15px] p-[70px] md:px-10 sm:px-5 relative rounded-[20px] shadow-bs6 w-[66%] md:w-full">
+              <div className="absolute flex  flex-col gap-[23px] inset-x-[0] items-center justify-start mx-auto pb-[72px] rounded-[5px] top-[12%] w-3/4">
                 <Input
                   name="Group843"
                   placeholder="Send Message"
@@ -104,43 +101,59 @@ const ContactPage = () => {
                   size="xs"
                 ></Input>
                 <div className="flex flex-col items-center justify-start rounded-[5px] w-full">
+                  <form ref={form} onSubmit={sendEmail} >
                   <div className="flex flex-col gap-[30px] items-center justify-start w-full">
-                    <div className="flex sm:flex-col flex-row gap-[30px] items-center justify-between w-full">
-                      <Input
-                        name="Group750"
+                    <div className="flex sm:flex-col flex-row items-center justify-between gap-4  ">
+                      <input
+                        name="from_name"
+                        value = {formData.from_name}
+                        onChange = {handleChange}
                         placeholder="Your Name"
-                        className="font-bold leading-[normal] p-0 placeholder:text-gray-400 text-base text-left w-full"
-                        wrapClassName="sm:flex-1 sm:w-full"
+                        className="font-semibold leading-[normal] p-3 bg-gray-100  border-2 border-gray-200 rounded-sm placeholder:text-gray-400 placeholder:italic text-base w-1/2"
+                        
                         type="text"
-                        shape="round"
-                        color="gray_100"
-                        variant="fill"
-                      ></Input>
-                      <Input
-                        name="Group751"
+                        
+                      ></input>
+                      <input
+                        name="email"
+                        value = {formData.email}
+                        onChange = {handleChange}
                         placeholder="Your Email"
-                        className="font-bold leading-[normal] p-0 placeholder:text-gray-400 text-base text-left w-full"
-                        wrapClassName="sm:flex-1 sm:w-full"
+                        className="font-semibold leading-[normal] p-3 bg-gray-100  border-2 border-gray-200 rounded-sm placeholder:text-gray-400 placeholder:italic text-base w-1/2"
+                        
                         type="email"
-                        shape="round"
-                        color="gray_100"
-                        variant="fill"
-                      ></Input>
+                        
+                      ></input>
                     </div>
-                    <TextArea
-                      className="bg-gray-100 border-0 font-bold leading-[normal] pb-[35px] pl-[19px] sm:pr-5 pr-[35px] pt-6 rounded-[5px] text-base placeholder:text-gray-400 text-gray-400 text-left w-full"
-                      name="Group748"
-                      placeholder="Your Message"
-                    ></TextArea>
+                    <textarea
+                      className="bg-gray-100 border-2 border-gray-200 font-bold leading-[normal] placeholder:italic pb-[35px] pl-[19px] sm:pr-5 pr-[35px] pt-6 rounded-[5px] text-base placeholder:text-gray-400 text-gray-400 text-left w-full"
+                      name="message"
+                      value={formData.message}
+                      onChange = {handleChange}
+                      placeholder="Your Message..."
+                    ></textarea>
+
+                    <div>
+                      <Button
+                        className=" bottom-[17%] cursor-pointer leading-[normal] left-[14%] min-w-[182px] rounded-[25px] text-center text-xl"
+                        color="green_600"
+                      >
+                          Send
+                      </Button>
+                    </div>
+
+                    <div>
+                      {
+                        emailSent ? <span className="text-green-600_63 italic text-lg font-bold " >Email Sent</span> : <span></span>
+                      }
+                    </div>
+
                   </div>
+                  </form>
                 </div>
+                
               </div>
-              <Button
-                className="absolute bottom-[17%] cursor-pointer leading-[normal] left-[14%] min-w-[182px] rounded-[25px] text-center text-xl"
-                color="green_600"
-              >
-                Send
-              </Button>
+              
             </div>
             <div className="bg-white-A700 flex flex-col items-start justify-center mb-3 p-[33px] sm:px-5 rounded-[20px] shadow-bs6 w-[32%] md:w-full">
               <div className="flex flex-col gap-[31px] items-center justify-start mb-9 mt-11 w-[90%] md:w-full">
@@ -155,15 +168,16 @@ const ContactPage = () => {
                   <div className="flex flex-col gap-[29px] items-start justify-start ml-1 md:ml-[0] w-[92%] md:w-full">
                     <div className="flex flex-row gap-[25px] items-start justify-start w-[74%] md:w-full">
                       <Img
-                        className="h-6 w-6"
+                        className="h-6 w-6 "
                         src="images/img_frame666.svg"
                         alt="Frame666"
+
                       />
                       <Text
                         className="text-[17px] text-gray-401"
                         size="txtSourceSansProSemiBold17"
                       >
-                        hello@nexus.com
+                        anshj9y@gmail.com
                       </Text>
                     </div>
                     <div className="flex flex-row gap-[25px] items-start justify-start w-[70%] md:w-full">
@@ -172,13 +186,15 @@ const ContactPage = () => {
                         src="images/img_globe.svg"
                         alt="globe"
                       />
+                      <a href="https://github.com/alwaysAnsh/Nexus" target="_blank">
                       <Text
                         className="common-pointer mt-1 text-[17px] text-gray-401"
                         size="txtSourceSansProSemiBold17"
-                        onClick={handleNavigate}
+                        // onClick={handleNavigate}
                       >
                         www.nexus.com
                       </Text>
+                      </a>
                     </div>
                     <div className="flex flex-row gap-[25px] items-start justify-start w-full">
                       <Img
@@ -190,7 +206,7 @@ const ContactPage = () => {
                         className="sm:flex-1 text-[17px] text-gray-401 w-4/5 sm:w-full"
                         size="txtSourceSansProSemiBold17"
                       >
-                        Sudirman street, holgan, melbourne
+                        Near Rangmahal Garden, Indore
                       </Text>
                     </div>
                     <div className="flex flex-row gap-[25px] items-start justify-start w-[54%] md:w-full">
@@ -203,7 +219,7 @@ const ContactPage = () => {
                         className="mt-1 text-[17px] text-gray-401"
                         size="txtSourceSansProSemiBold17"
                       >
-                        0361 - 8878
+                        7617231365
                       </Text>
                     </div>
                   </div>
@@ -219,26 +235,34 @@ const ContactPage = () => {
                     <Line className="bg-gray-200 h-px w-full" />
                   </div>
                   <div className="flex flex-row gap-[19px] items-center justify-end md:ml-[0] ml-[31px] w-[89%] md:w-full">
+                    <a href="https://www.instagram.com/maha.purush__/" target="_blank">
+                      <Img
+                        className="h-[47px] md:h-auto object-cover w-[47px] hover:bg-pink-600 hover:border-2 hover:cursor-pointer transition-all duration-200 rounded-full "
+                        src="images/img_group270.png"
+                        alt="Instagram"
+                      />
+                    </a>
+                    <a href="https://twitter.com/home?lang=en" target="_blank">
+                      <Img
+                        className="h-[47px] md:h-auto object-cover w-[47px] hover:bg-blue-600 hover:border-2 hover:cursor-pointer transition-all duration-200 rounded-full"
+                        src="images/img_group271.png"
+                        alt="Twitter"
+                      />
+                    </a>
+                    <a href="https://github.com/alwaysAnsh" target="_blank">
+                      <Img
+                        className="h-[47px] md:h-auto object-cover w-[47px] hover:bg-black-900 hover:border-2 hover:cursor-pointer transition-all duration-200 rounded-full"
+                        src="images/img_group268.png"
+                        alt="Github Link"
+                      />
+                    </a>
+                    <a href="mailto:anshj9y@gmail.com" target="_blank" >
                     <Img
-                      className="h-[47px] md:h-auto object-cover w-[47px]"
-                      src="images/img_group270.png"
-                      alt="Group270"
-                    />
-                    <Img
-                      className="h-[47px] md:h-auto object-cover w-[47px]"
-                      src="images/img_group271.png"
-                      alt="Group271"
-                    />
-                    <Img
-                      className="h-[47px] md:h-auto object-cover w-[47px]"
-                      src="images/img_group268.png"
-                      alt="Group268"
-                    />
-                    <Img
-                      className="h-[47px] md:h-auto object-cover w-[47px]"
+                      className="h-[47px] md:h-auto object-cover w-[47px] hover:bg-pink-600 hover:border-2 hover:cursor-pointer transition-all duration-200 rounded-full"
                       src="images/img_group269.png"
-                      alt="Group269"
+                      alt="email Icon"
                     />
+                    </a>
                   </div>
                 </div>
               </div>

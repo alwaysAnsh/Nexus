@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Img, Line, Text } from "components";
 import Footer1 from "components/Footer1";
+import Navbar from "components/Navbar";
 
 const WorksPage = () => {
   const navigate = useNavigate();
@@ -11,54 +12,8 @@ const WorksPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-sourcesanspro gap-[54px] items-center justify-start mx-auto w-full">
-        <header className="flex items-center justify-center md:px-5 w-full">
-          <div className="flex flex-row md:gap-10 items-center justify-between ml-[164px] mr-[181px] my-[15px] w-[76%]">
-            <div className="header-row ">
-              <Img
-                className="h-[50px]"
-                src="images/img_group642.svg"
-                alt="Group645"
-              />
-              <div className="mobile-menu">
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-            </div>
-            <div className="flex flex-row sm:hidden items-start justify-between pt-[7px] w-[38%]">
-              <Text
-                className="common-pointer text-black-900 text-lg"
-                size="txtSourceSansProBold18Black900"
-                onClick={() => navigate("/")}
-              >
-                Home
-              </Text>
-              <Text
-                className="common-pointer text-black-900 text-lg"
-                size="txtSourceSansProBold18Black900"
-                onClick={() => navigate("/about")}
-              >
-                About
-              </Text>
-              <div className="flex flex-col gap-[11px] items-center justify-start">
-                <Text
-                  className="text-lg text-red-401"
-                  size="txtSourceSansProBold18"
-                >
-                  Works
-                </Text>
-                <div className="bg-red-401 h-1.5 rounded-[50%] w-1.5"></div>
-              </div>
-              <Text
-                className="common-pointer text-black-900 text-lg"
-                size="txtSourceSansProBold18Black900"
-                onClick={() => navigate("/contact")}
-              >
-                Contact
-              </Text>
-            </div>
-          </div>
-        </header>
+        
+        <Navbar/>
         <div className="flex flex-col items-start justify-start max-w-[1384px] mx-auto md:px-5 w-full">
           <div className="bg-green-A100 sm:h-[580px] h-[646px] md:h-[930px] md:ml-[0] ml-[130px] p-1 relative rounded-[90px] w-[86%] md:w-full">
             <div className="flex flex-col md:gap-10 gap-[82px] h-full  justify-center items-center mx-auto">

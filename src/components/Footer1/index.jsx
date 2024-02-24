@@ -10,16 +10,12 @@ const Footer1 = (props) => {
           <div className="flex flex-col gap-[7px] items-start justify-start w-[77%] md:w-full">
             <div className="flex sm:flex-col flex-row sm:gap-10 items-start justify-between w-[91%] md:w-full">
               <div className="flex flex-row gap-3 items-center justify-start w-[19%] sm:w-full">
-                <Img
-                  className="h-[50px] w-[50px]"
-                  src="defaultNoData.png"
-                  alt="grid One"
-                />
+                
                 <Text
                   className="text-2xl md:text-[22px] text-white-A700 sm:text-xl"
                   size="txtSpectralSCBold24"
                 >
-                  Naxus
+                  Nexus
                 </Text>
               </div>
               <div className="flex flex-row items-center justify-between sm:mt-0 mt-6 w-[47%] sm:w-full">
@@ -33,25 +29,25 @@ const Footer1 = (props) => {
                     </Text>
                     <div className="flex flex-col gap-[35px] items-start justify-start w-full">
                       <Text
-                        className="text-lg text-white-A700 tracking-[0.90px]"
+                        className="text-lg text-white-A700 tracking-[0.90px] cursor-pointer transition-all duration-200 hover:opacity-80"
                         size="txtSourceSansProSemiBold18"
                       >
                         About
                       </Text>
                       <Text
-                        className="text-lg text-white-A700 tracking-[0.90px]"
+                        className="text-lg text-white-A700 tracking-[0.90px] cursor-pointer transition-all duration-200 hover:opacity-80"
                         size="txtSourceSansProSemiBold18"
                       >
                         What we do
                       </Text>
                       <Text
-                        className="text-lg text-white-A700 tracking-[0.90px]"
+                        className="text-lg text-white-A700 tracking-[0.90px] cursor-pointer transition-all duration-200 hover:opacity-80"
                         size="txtSourceSansProSemiBold18"
                       >
                         Works
                       </Text>
                       <Text
-                        className="text-lg text-white-A700 tracking-[0.90px]"
+                        className="text-lg text-white-A700 tracking-[0.90px] cursor-pointer transition-all duration-200 hover:opacity-80"
                         size="txtSourceSansProSemiBold18"
                       >
                         Testimonial
@@ -72,25 +68,25 @@ const Footer1 = (props) => {
                   </div>
                   <div className="flex flex-col items-start justify-start">
                     <Text
-                      className="text-lg text-white-A700 tracking-[0.90px]"
+                      className="text-lg text-white-A700 tracking-[0.90px] cursor-pointer transition-all duration-200 hover:opacity-80"
                       size="txtSourceSansProSemiBold18"
                     >
-                      Dribbble
+                      Github
                     </Text>
                     <Text
-                      className="mt-[37px] text-lg text-white-A700 tracking-[0.90px]"
+                      className="mt-[37px] text-lg text-white-A700 tracking-[0.90px] cursor-pointer transition-all duration-200 hover:opacity-80"
                       size="txtSourceSansProSemiBold18"
                     >
                       Instagram
                     </Text>
                     <Text
-                      className="mt-8 text-lg text-white-A700 tracking-[0.90px]"
+                      className="mt-8 text-lg text-white-A700 tracking-[0.90px] cursor-pointer transition-all duration-200 hover:opacity-80"
                       size="txtSourceSansProSemiBold18"
                     >
-                      Behance
+                      Twitter
                     </Text>
                     <Text
-                      className="mt-[34px] text-lg text-white-A700 tracking-[0.90px]"
+                      className="mt-[34px] text-lg text-white-A700 tracking-[0.90px] cursor-pointer transition-all duration-200 hover:opacity-80"
                       size="txtSourceSansProSemiBold18"
                     >
                       Pinterest
